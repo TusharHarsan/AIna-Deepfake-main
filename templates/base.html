@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <link rel="stylesheet" href="/static/css/jquery-ui.css">
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <title>AIna</title>
+    <link rel="icon" href="/static/images/logo1.png" type="image/png">
+</head>
+<style>
+    .form {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 
+            0 8px 32px 0 rgba(13, 81, 228, 0.4),
+            0 0 20px rgba(13, 81, 228, 0.2),
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    .form-group{
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    
+    .upload-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    /* Styling for the input */
+    #dynamic-input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        width: 250px;
+    }
+
+    /* Change the background color when the input is focused */
+    #dynamic-input:focus {
+        background-color: #e0f7fa;  /* Light teal */
+        border-color: #00796b;      /* Darker green border */
+        box-shadow: 0 0 10px rgba(0, 123, 123, 0.5);  /* Light green glow */
+        outline: none;
+    }
+
+    /* Add a color transition effect on hover */
+    #dynamic-input:hover {
+        background-color: #f1f8e9;  /* Light green */
+        border-color: #8bc34a;       /* Green border */
+    }
+
+    /* Placeholder text styling */
+    #dynamic-input::placeholder {
+        color: #757575; /* Dark gray */
+        font-style: italic;
+    }
+
+    label {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    
+    .file-name {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        word-break: break-all;
+    }
+    #videoUpload {
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(0deg, #3d5afe, #84ffff);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #videoUpload::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease-out, height 0.6s ease-out;
+    }
+
+    #videoUpload:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    #videoUpload:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(61, 90, 254, 0.4);
+    }
+    .logo{
+        background: linear-gradient(0deg, #3d5afe, #84ffff);
+        z-index:20;
+    }
+    .form-group{
+        background: linear-gradient(0deg, #4d5afe, #84ffff);
+        z-index:20;
+        border-radius:20px;
+    }
+    input[type="file"] {
+        background-color: #ffffff;
+        width:96px;
+    }
+    
+    input[type="file"]:focus{
+        background-color: #ffffff; /* White background on focus */
+        border-color: #00796b;      /* Darker green border */
+        box-shadow: 0 0 10px rgba(0, 123, 123, 0.5);  /* Light green glow */
+        outline: none;
+    }
+</style>
+<body>  
+    
+    {%include 'nav-bar.html'%}
+    <div style="margin-top:10px">
+    {%block content%}
+    {%endblock%}
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+        <script src="/static/js/jquery-3.4.1.min.js" ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script> -->
+        <script src="/static/js/popper.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> -->
+        <script src="/static/js/jquery-ui.min.js"></script>
+    
+        {%block js_cripts%}
+    {%endblock%}
+    </div>
+    
+    {%include 'footer.html'%}
+    
+    
+</body>
+    <script>
+        const fileUpload = document.getElementById('file-upload');
+        const container = document.querySelector('.file-upload-container');
+        const fileNameDisplay = container.querySelector('.file-name');
+        
+
+        fileUpload.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                container.classList.add('has-file');
+                fileNameDisplay.textContent = this.files[0].name;
+            } else {
+                container.classList.remove('has-file');
+                fileNameDisplay.textContent = '';
+            }
+        });
+    </script>
+</html>
